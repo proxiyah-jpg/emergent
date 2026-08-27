@@ -26,17 +26,22 @@ export default function Hero() {
       v.play().catch(() => {});
     };
     v.addEventListener("ended", onEnded);
-    v.loop = false;
-    v.muted = false;
-    const tryPlay = v.play();
-    if (tryPlay) {
-      tryPlay.catch(() => {
-        v.muted = true;
-        v.loop = true;
-        v.play().catch(() => {});
-      });
-    }
-    return () => v.removeEventListener("ended", onEnded);
+    const timer = setTimeout(() => {
+      v.loop = false;
+      v.muted = false;
+      const tryPlay = v.play();
+      if (tryPlay) {
+        tryPlay.catch(() => {
+          v.muted = true;
+          v.loop = true;
+          v.play().catch(() => {});
+        });
+      }
+    }, 2500);
+    return () => {
+      clearTimeout(timer);
+      v.removeEventListener("ended", onEnded);
+    };
   }, []);
 
   return (
@@ -44,7 +49,6 @@ export default function Hero() {
       <motion.div style={{ y: bgY }} className="absolute inset-0">
         <video
           ref={videoRef}
-          autoPlay
           muted
           playsInline
           preload="auto"
