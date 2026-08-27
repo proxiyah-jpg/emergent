@@ -19,9 +19,11 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-12">
         <a href="#hero" data-testid="nav-logo" className="group flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center border border-volt font-display text-sm text-volt transition-colors duration-300 group-hover:bg-volt group-hover:text-black">
-            BE
-          </span>
+          <img
+            src="/assets/logo.jpg"
+            alt="Logo Belgium Elite Academy"
+            className="h-11 w-11 object-contain transition-transform duration-300 group-hover:scale-105"
+          />
           <span className="font-display text-sm tracking-[0.2em] uppercase hidden sm:block">
             Belgium Elite Academy
           </span>

@@ -29,6 +29,9 @@ Créer un site de présentation pour une académie de football "BELGIUM ELITE AC
 - Header fixe glassmorphism avec navigation par ancres, scroll fluide Lenis
 - Responsive mobile/desktop vérifié par captures d'écran
 - Galerie photo supprimée à la demande du client (27 août)
+- **Logo officiel de l'académie** intégré (header + hero, bien visible) (27 août)
+- **Localisation Google Maps** : carte intégrée en mode sombre + lien vers Terrain de football Saint-Nicolas, Liège (27 août)
+- Section staff réduite à un seul coach : YILMAZ, Entraîneur Principal, 30+ ans d'expérience (validé par le client)
 
 ## Points MOCKÉS / à confirmer
 - Aucun : le coach YILMAZ (Entraîneur Principal, 30+ ans d'expérience) est le vrai profil validé par le client (27 août)

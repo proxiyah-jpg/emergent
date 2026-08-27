@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { useLang, CONTACT } from "@/i18n";
 
 export default function Contact() {
@@ -75,6 +75,47 @@ export default function Contact() {
             </span>
             <ArrowUpRight size={28} className="shrink-0 text-volt transition-all duration-500 group-hover:translate-x-1 group-hover:text-black" />
           </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.1 }}
+          className="mt-px grid grid-cols-1 gap-px border border-line border-t-0 bg-line lg:grid-cols-[1.4fr_1fr]"
+          data-testid="contact-location-block"
+        >
+          <div className="h-72 bg-smoke md:h-96">
+            <iframe
+              title="Belgium Elite Academy — Google Maps"
+              src="https://maps.google.com/maps?q=50.637764,5.5363061&z=16&output=embed"
+              className="h-full w-full border-0"
+              style={{ filter: "grayscale(1) invert(0.92) contrast(0.85)" }}
+              loading="lazy"
+              data-testid="contact-map-iframe"
+            />
+          </div>
+          <div className="flex flex-col justify-between bg-obsidian p-7 md:p-12">
+            <div>
+              <p className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-white/50">
+                <MapPin size={14} className="text-volt" /> {t.contact.locationLabel}
+              </p>
+              <p className="mt-3 font-display text-xl uppercase leading-tight text-white md:text-2xl" data-testid="contact-location-name">
+                {t.contact.locationName}
+              </p>
+              <p className="mt-2 text-sm font-light text-white/50">{t.contact.locationCity}</p>
+            </div>
+            <a
+              href="https://maps.app.goo.gl/8LkRXBbmNBmtDx5G8"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="contact-maps-link"
+              className="group mt-8 inline-flex w-fit items-center gap-3 border border-volt px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-volt transition-colors duration-300 hover:bg-volt hover:text-black"
+            >
+              {t.contact.mapsCta}
+              <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
         </motion.div>
       </div>
 

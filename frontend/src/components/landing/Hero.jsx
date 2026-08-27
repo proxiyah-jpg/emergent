@@ -35,6 +35,15 @@ export default function Hero() {
       </motion.div>
 
       <motion.div style={{ opacity: fade }} className="relative z-10 mx-auto w-full max-w-[1600px] px-5 pb-16 pt-40 md:px-12 md:pb-24">
+        <motion.img
+          src="/assets/logo.jpg"
+          alt="Logo Belgium Elite Academy"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 h-24 w-24 object-contain md:h-32 md:w-32"
+          data-testid="hero-logo"
+        />
         <motion.p
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
