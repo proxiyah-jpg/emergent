@@ -36,6 +36,16 @@ export default function Hero() {
       v.loop = true;
       v.play().catch(() => {});
       setShowSoundBtn(true);
+      const events = ["pointerdown", "touchstart", "wheel", "keydown"];
+      const handler = () => {
+        v.loop = false;
+        v.muted = false;
+        v.currentTime = 0;
+        v.play().catch(() => {});
+        setShowSoundBtn(false);
+        events.forEach((e) => window.removeEventListener(e, handler));
+      };
+      events.forEach((e) => window.addEventListener(e, handler, { passive: true }));
     });
     return () => v.removeEventListener("ended", onEnded);
   }, []);
