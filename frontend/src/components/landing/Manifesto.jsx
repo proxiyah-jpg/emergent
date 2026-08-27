@@ -26,7 +26,7 @@ export default function Manifesto() {
         className="mb-16 max-w-4xl font-display text-4xl uppercase leading-[0.95] sm:text-5xl md:mb-24 lg:text-7xl"
         data-testid="manifesto-title"
       >
-        {t.manifesto.title1} <span className="text-outline">{t.manifesto.title2}</span>
+        {t.manifesto.title1} <span className="text-volt">{t.manifesto.title2}</span>
       </motion.h2>
 
       <div className="flex flex-col">
