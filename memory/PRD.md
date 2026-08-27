@@ -32,7 +32,7 @@ Créer un site de présentation pour une académie de football "BELGIUM ELITE AC
 - **Logo officiel de l'académie** intégré (header + hero, bien visible) (27 août)
 - **Localisation Google Maps** : carte intégrée en mode sombre + lien vers Terrain de football Saint-Nicolas, Liège (27 août)
 - Section staff réduite à un seul coach : YILMAZ, Entraîneur Principal, 30+ ans d'expérience (validé par le client)
-- **Son de la vidéo hero** : la vidéo démarre ~2,5 secondes après l'ouverture du site, pour une seule lecture — avec son si le navigateur l'autorise (PC généralement OK), en muet sur Android/mobile (blocage imposé par Google/Apple). Après la 1re lecture complète avec son, la vidéo boucle en muet. Aucun bouton, aucun gel (27 août)
+- **Son de la vidéo hero** : la vidéo démarre immédiatement à l'ouverture du site. Tentative de lecture AVEC son ; si le navigateur bloque (Android/iOS), lecture muette puis déblocage du son au premier toucher/clic du visiteur (sans gel). Une seule lecture sonore, puis la vidéo recommence en muet en boucle (27 août)
 
 ## Note déploiement
 - Le site est déployé en production (https://pro-pathway-academy.emergent.host). Toute modification faite en preview nécessite un REDÉPLOIEMENT par l'utilisateur pour être visible en production.

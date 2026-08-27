@@ -20,27 +20,34 @@ export default function Hero() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    let soundPlayedOnce = false;
+    let gestureHandler = null;
+    const events = ["pointerdown", "touchstart", "keydown", "wheel"];
     const onEnded = () => {
+      soundPlayedOnce = true;
       v.muted = true;
-      v.loop = true;
+      v.currentTime = 0;
       v.play().catch(() => {});
     };
     v.addEventListener("ended", onEnded);
-    const timer = setTimeout(() => {
-      v.loop = false;
-      v.muted = false;
-      const tryPlay = v.play();
-      if (tryPlay) {
-        tryPlay.catch(() => {
-          v.muted = true;
-          v.loop = true;
+    v.muted = false;
+    const tryPlay = v.play();
+    if (tryPlay) {
+      tryPlay.catch(() => {
+        v.muted = true;
+        v.play().catch(() => {});
+        gestureHandler = () => {
+          if (soundPlayedOnce) return;
+          v.muted = false;
           v.play().catch(() => {});
-        });
-      }
-    }, 2500);
+          events.forEach((e) => window.removeEventListener(e, gestureHandler));
+        };
+        events.forEach((e) => window.addEventListener(e, gestureHandler, { passive: true }));
+      });
+    }
     return () => {
-      clearTimeout(timer);
       v.removeEventListener("ended", onEnded);
+      if (gestureHandler) events.forEach((e) => window.removeEventListener(e, gestureHandler));
     };
   }, []);
 
