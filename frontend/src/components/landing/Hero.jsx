@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Volume2 } from "lucide-react";
 import { useLang } from "@/i18n";
 
 const lineAnim = (delay) => ({
@@ -16,47 +16,72 @@ export default function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const [showSoundBtn, setShowSoundBtn] = useState(false);
+  const soundUsedRef = useRef(false);
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    let soundPlayedOnce = false;
-    let gestureHandler = null;
-    const events = ["pointerdown", "touchstart", "keydown", "wheel"];
+    const isMobile = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
+
     const onEnded = () => {
-      soundPlayedOnce = true;
       v.muted = true;
-      v.currentTime = 0;
+      v.loop = true;
       v.play().catch(() => {});
     };
     v.addEventListener("ended", onEnded);
+
+    const unlockGesture = () => {
+      if (soundUsedRef.current || isMobile) return;
+      soundUsedRef.current = true;
+      v.loop = false;
+      v.muted = false;
+      v.currentTime = 0;
+      v.play().catch(() => {});
+      window.removeEventListener("pointerdown", unlockGesture);
+      window.removeEventListener("keydown", unlockGesture);
+    };
+
+    v.currentTime = 0;
+    v.loop = false;
     v.muted = false;
-    const tryPlay = v.play();
-    if (tryPlay) {
-      tryPlay.catch(() => {
+    const p = v.play();
+    if (p) {
+      p.then(() => {
+        soundUsedRef.current = true;
+      }).catch(() => {
         v.muted = true;
         v.play().catch(() => {});
-        gestureHandler = () => {
-          if (soundPlayedOnce) return;
-          v.muted = false;
-          v.play().catch(() => {});
-          events.forEach((e) => window.removeEventListener(e, gestureHandler));
-        };
-        events.forEach((e) => window.addEventListener(e, gestureHandler, { passive: true }));
+        if (isMobile) {
+          setShowSoundBtn(true);
+        } else {
+          window.addEventListener("pointerdown", unlockGesture, { passive: true });
+          window.addEventListener("keydown", unlockGesture, { passive: true });
+        }
       });
     }
     return () => {
       v.removeEventListener("ended", onEnded);
-      if (gestureHandler) events.forEach((e) => window.removeEventListener(e, gestureHandler));
+      window.removeEventListener("pointerdown", unlockGesture);
+      window.removeEventListener("keydown", unlockGesture);
     };
   }, []);
+
+  const enableSound = () => {
+    const v = videoRef.current;
+    if (!v || soundUsedRef.current) return;
+    soundUsedRef.current = true;
+    v.loop = false;
+    v.muted = false;
+    v.play().catch(() => {});
+    setShowSoundBtn(false);
+  };
 
   return (
     <section id="hero" ref={ref} className="relative flex min-h-screen flex-col justify-end overflow-hidden" data-testid="hero-section">
       <motion.div style={{ y: bgY }} className="absolute inset-0">
         <video
           ref={videoRef}
-          muted
           playsInline
           preload="auto"
           className="h-[120%] w-full object-cover"
@@ -67,6 +92,19 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/40" />
       </motion.div>
+
+      {showSoundBtn && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          onClick={enableSound}
+          data-testid="hero-sound-button"
+          className="absolute bottom-6 right-5 z-20 flex items-center gap-2 rounded-full border border-white/25 bg-black/40 px-4 py-2 text-[11px] uppercase tracking-[0.15em] text-white/70 backdrop-blur-md transition-colors duration-300 hover:border-volt hover:text-volt"
+        >
+          <Volume2 size={13} /> {t.hero.soundCta}
+        </motion.button>
+      )}
 
       <motion.div style={{ opacity: fade }} className="relative z-10 mx-auto w-full max-w-[1600px] px-5 pb-16 pt-40 md:px-12 md:pb-24">
         <motion.img

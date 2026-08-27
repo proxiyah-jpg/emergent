@@ -32,7 +32,7 @@ Créer un site de présentation pour une académie de football "BELGIUM ELITE AC
 - **Logo officiel de l'académie** intégré (header + hero, bien visible) (27 août)
 - **Localisation Google Maps** : carte intégrée en mode sombre + lien vers Terrain de football Saint-Nicolas, Liège (27 août)
 - Section staff réduite à un seul coach : YILMAZ, Entraîneur Principal, 30+ ans d'expérience (validé par le client)
-- **Son de la vidéo hero** : la vidéo démarre immédiatement à l'ouverture du site. Tentative de lecture AVEC son ; si le navigateur bloque (Android/iOS), lecture muette puis déblocage du son au premier toucher/clic du visiteur (sans gel). Une seule lecture sonore, puis la vidéo recommence en muet en boucle (27 août)
+- **Son de la vidéo hero** : desktop = tentative d'autoplay AVEC son dès l'ouverture, en repartant de currentTime=0 (première phrase audio non coupée) ; si bloqué, premier clic démute en repartant du début. Smartphone = autoplay muet + bouton discret "Activer le son" qui démute SANS redémarrer la vidéo (pas de gel). Dans les 2 cas : une seule lecture sonore, puis boucle muette. Fix clé : attribut muted retiré du JSX (React l'écrasait), tout est piloté en JS (27 août)
 
 ## Note déploiement
 - Le site est déployé en production (https://pro-pathway-academy.emergent.host). Toute modification faite en preview nécessite un REDÉPLOIEMENT par l'utilisateur pour être visible en production.
