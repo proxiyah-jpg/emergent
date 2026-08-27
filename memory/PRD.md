@@ -31,7 +31,7 @@ Créer un site de présentation pour une académie de football "BELGIUM ELITE AC
 - Galerie photo supprimée à la demande du client (27 août)
 
 ## Points MOCKÉS / à confirmer
-- Les 3 coachs (Y. Janssens, K. De Smet, M. Dupont) sont des PROFILS FICTIFS — fournir les vrais noms, photos et parcours du staff
+- Aucun : le coach YILMAZ (Entraîneur Principal, 30+ ans d'expérience) est le vrai profil validé par le client (27 août)
 
 ## Backlog priorisé
 - P0 : Remplacer les profils fictifs des coachs par les vrais noms/photos/parcours
