@@ -19,22 +19,23 @@ Créer un site de présentation pour une académie de football "BELGIUM ELITE AC
 - Joueur déjà en club voulant accélérer sa progression
 
 ## Implémenté (27 août 2026)
-- Hero cinétique avec révélation ligne par ligne (BELGIUM / ELITE / ACADEMY), image stade de nuit avec parallaxe
+- Hero cinétique avec révélation ligne par ligne (BELGIUM / ELITE / ACADEMY), **vidéo d'entraînement réelle en fond** (autoplay, muette, en boucle) avec parallaxe
+- Site **trilingue FR / NL / EN** avec sélecteur de langue dans le header (tout le contenu traduit)
 - Marquee éditorial lent (phrases clés : U17-U23, carrière pro…)
 - Manifeste en 3 chapitres numérotés : La Méthode, Pour Qui, Le Parcours Pro + bandeau stats
-- Galerie bento asymétrique (4 photos d'entraînement, traitement noir & blanc, couleur au survol)
-- Contact brutaliste : email + téléphone en grand format, footer
+- **Section Équipe Technique** : photo réelle de l'entraînement (fournie par le client) + 3 fiches coachs (Entraîneur Principal, Préparateur Physique, Entraîneur des Gardiens)
+- Contact brutaliste avec les **vraies coordonnées** : belgiumeliteacademy@gmail.com et +32 451 05 19 11
+- **SEO Google** : balises meta description/keywords (attaquant, défenseur, milieu central, gardien, club Belgique, devenir pro…), Open Graph, données structurées JSON-LD SportsOrganization
 - Header fixe glassmorphism avec navigation par ancres, scroll fluide Lenis
 - Responsive mobile/desktop vérifié par captures d'écran
+- Galerie photo supprimée à la demande du client (27 août)
 
 ## Points MOCKÉS / à confirmer
-- Email contact@belgiumeliteacademy.be et téléphone +32 470 00 00 00 sont des PLACEHOLDERS — fournir les vrais contacts
-- Photos d'entraînement : banque d'images (pas les vraies photos de l'académie)
+- Les 3 coachs (Y. Janssens, K. De Smet, M. Dupont) sont des PROFILS FICTIFS — fournir les vrais noms, photos et parcours du staff
 
 ## Backlog priorisé
-- P0 : Remplacer email/téléphone par les vraies coordonnées
-- P0 : Ajouter les vraies photos des entraînements U17-U23
+- P0 : Remplacer les profils fictifs des coachs par les vrais noms/photos/parcours
 - P1 : Formulaire d'inscription avec sauvegarde en base (si souhaité plus tard)
-- P1 : Section coachs/staff avec photos et parcours
-- P2 : Version bilingue FR/NL
+- P1 : Plus de photos/vidéos réelles des entraînements
 - P2 : Témoignages de joueurs passés en pro
+- P2 : Sitemap.xml + robots.txt + Google Search Console pour le référencement

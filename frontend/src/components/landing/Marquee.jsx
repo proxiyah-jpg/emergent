@@ -1,7 +1,8 @@
-const phrases = ["S'entraîner comme un pro", "Boostez votre carrière", "U17 — U23", "Élite belge", "Vers le monde professionnel"];
+import { useLang } from "@/i18n";
 
 export default function Marquee() {
-  const row = [...phrases, ...phrases];
+  const { t } = useLang();
+  const row = [...t.marquee, ...t.marquee];
   return (
     <div className="overflow-hidden border-y border-line bg-obsidian py-6 md:py-8" data-testid="editorial-marquee">
       <div className="flex w-max animate-marquee items-center gap-10 whitespace-nowrap md:gap-16">

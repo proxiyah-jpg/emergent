@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { useLang } from "@/i18n";
 
 const lineAnim = (delay) => ({
   initial: { y: "110%" },
@@ -9,6 +10,7 @@ const lineAnim = (delay) => ({
 });
 
 export default function Hero() {
+  const { t } = useLang();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
@@ -17,13 +19,18 @@ export default function Hero() {
   return (
     <section id="hero" ref={ref} className="relative flex min-h-screen flex-col justify-end overflow-hidden" data-testid="hero-section">
       <motion.div style={{ y: bgY }} className="absolute inset-0">
-        <img
-          src="https://images.pexels.com/photos/186239/pexels-photo-186239.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Stade de football illuminé la nuit"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
           className="h-[120%] w-full object-cover"
-          data-testid="hero-background-image"
-        />
-        <div className="absolute inset-0 bg-black/65" />
+          data-testid="hero-background-video"
+        >
+          <source src="/assets/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/40" />
       </motion.div>
 
@@ -35,7 +42,7 @@ export default function Hero() {
           className="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-volt md:text-sm"
           data-testid="hero-badge"
         >
-          <span className="inline-block h-px w-10 bg-volt" /> Académie de football · U17 — U23 · Belgique
+          <span className="inline-block h-px w-10 bg-volt" /> {t.hero.badge}
         </motion.p>
 
         <h1 className="font-display uppercase leading-[0.9] text-[15vw] sm:text-[12vw] lg:text-[9.5vw]" data-testid="hero-title">
@@ -52,8 +59,7 @@ export default function Hero() {
             className="max-w-xl text-base font-light leading-relaxed text-white/70 md:text-lg"
             data-testid="hero-subtitle"
           >
-            Des entraînements d'exigence professionnelle qui vous mènent vers une carrière pro.
-            Déjà en club ? Rejoignez-nous en complément et boostez votre progression.
+            {t.hero.subtitle}
           </motion.p>
           <motion.a
             initial={{ opacity: 0, y: 30 }}
@@ -63,7 +69,7 @@ export default function Hero() {
             data-testid="hero-cta-button"
             className="group inline-flex w-fit items-center gap-4 border border-volt px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-volt transition-colors duration-300 hover:bg-volt hover:text-black"
           >
-            Découvrir l'académie
+            {t.hero.cta}
             <ArrowDown size={16} className="transition-transform duration-300 group-hover:translate-y-1" />
           </motion.a>
         </div>
