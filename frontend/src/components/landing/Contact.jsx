@@ -1,0 +1,88 @@
+import { motion } from "framer-motion";
+import { ArrowUpRight, Mail, Phone } from "lucide-react";
+
+export default function Contact() {
+  return (
+    <footer id="contact" className="border-t border-line" data-testid="contact-section">
+      <div className="mx-auto max-w-[1600px] px-5 py-24 md:px-12 md:py-40">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="mb-4 text-xs uppercase tracking-[0.35em] text-volt"
+          data-testid="contact-kicker"
+        >
+          Contact
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display uppercase leading-[0.9] text-[13vw] sm:text-[10vw] lg:text-[7.5vw]"
+          data-testid="contact-title"
+        >
+          Rejoignez <span className="text-volt">l'élite</span>
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="mt-8 max-w-xl text-base font-light leading-relaxed text-white/60"
+          data-testid="contact-subtitle"
+        >
+          Une question, une inscription, un essai ? Contactez-nous directement —
+          notre équipe vous répond rapidement.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="mt-14 flex flex-col gap-px border border-line bg-line md:mt-20 md:flex-row"
+        >
+          <a
+            href="mailto:contact@belgiumeliteacademy.be"
+            data-testid="contact-email-link"
+            className="group flex flex-1 items-center justify-between gap-4 bg-obsidian p-7 transition-colors duration-500 hover:bg-volt md:p-12"
+          >
+            <span>
+              <span className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-white/50 transition-colors duration-500 group-hover:text-black/60">
+                <Mail size={14} /> Email
+              </span>
+              <span className="mt-3 block break-all font-display text-sm uppercase text-white transition-colors duration-500 group-hover:text-black sm:text-2xl md:text-3xl">
+                contact@belgiumeliteacademy.be
+              </span>
+            </span>
+            <ArrowUpRight size={28} className="shrink-0 text-volt transition-all duration-500 group-hover:translate-x-1 group-hover:text-black" />
+          </a>
+          <a
+            href="tel:+32470000000"
+            data-testid="contact-phone-link"
+            className="group flex flex-1 items-center justify-between gap-4 bg-obsidian p-7 transition-colors duration-500 hover:bg-volt md:p-12"
+          >
+            <span>
+              <span className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-white/50 transition-colors duration-500 group-hover:text-black/60">
+                <Phone size={14} /> Téléphone
+              </span>
+              <span className="mt-3 block font-display text-lg uppercase text-white transition-colors duration-500 group-hover:text-black sm:text-2xl md:text-3xl">
+                +32 470 00 00 00
+              </span>
+            </span>
+            <ArrowUpRight size={28} className="shrink-0 text-volt transition-all duration-500 group-hover:translate-x-1 group-hover:text-black" />
+          </a>
+        </motion.div>
+      </div>
+
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-3 px-5 py-8 text-xs uppercase tracking-[0.2em] text-white/40 md:flex-row md:items-center md:justify-between md:px-12">
+          <span data-testid="footer-brand">© 2026 Belgium Elite Academy</span>
+          <span data-testid="footer-tagline">S'entraîner comme un pro. Devenir pro.</span>
+        </div>
+      </div>
+    </footer>
+  );
+}

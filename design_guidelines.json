@@ -1,0 +1,115 @@
+{
+  "project_name": "Belgium Elite Academy",
+  "app_type": "landing_page",
+  "theme": "dark",
+  "archetype": "The Performance Pro",
+  "typography": {
+    "headings": "Anton (Athletic, heavy-weight, brutalist uppercase impact)",
+    "body": "Inter (Geometric, high legibility, clean)",
+    "imports": "@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap');"
+  },
+  "colors": {
+    "background": "#050505",
+    "foreground": "#FFFFFF",
+    "primary": "#E6FF00",
+    "primary_foreground": "#000000",
+    "muted": "#1A1A1A",
+    "border": "#222222",
+    "description": "Deep Obsidian background (#050505) paired with Pure White text for maximum contrast. Volt Green (#E6FF00) used purely as a kinetic trigger for highlights and important accents."
+  },
+  "visual_enhancers": [
+    "High-contrast monochromatic or duotone photography treatment (using CSS grayscale and contrast filters).",
+    "Subtle CSS noise/grain overlay spanning the entire site background to give a gritty, tactile sportswear feel.",
+    "Sharp 1px borders (tactical minimalism) instead of soft box-shadows."
+  ],
+  "components_needed": [
+    "framer-motion (for line-by-line kinetic hero text and scroll reveals)",
+    "@studio-freight/react-lenis (for smooth momentum scrolling)",
+    "react-fast-marquee (for the slow editorial marquee)",
+    "lucide-react (for sharp, clean iconography)"
+  ],
+  "grids_and_layouts": [
+    "Tetris Grid for the Gallery and Manifesto sections (asymmetrical, large gaps like gap-8 or gap-12).",
+    "No standard centering: left-align massive text, use negative space aggressively to build tension."
+  ],
+  "motion": {
+    "hero": "Staggered line-by-line text reveal from bottom up using framer-motion. Very slow, deliberate timing.",
+    "scroll": "Elements fading and sliding up slightly as they enter viewport using framer-motion whileInView.",
+    "marquee": "Continuous loop, either massive outline text (Kinetic Texture) or an elegant spaced-out editorial ribbon."
+  },
+  "accessibility": {
+    "contrast": "Ensure APCA contrast on small text. When overlaying hero text on background images, use bg-black/60 or gradient overlays to ensure legibility.",
+    "data_testid": "Add data-testid attributes to all interactive elements (links, emails, phone numbers)."
+  },
+  "sections": [
+    {
+      "name": "Header/Nav",
+      "description": "Sticky top bar with glassmorphism (backdrop-blur-xl bg-black/60), academy logo on the left, email/phone contact on the right. No hamburger menu, just clean text links."
+    },
+    {
+      "name": "Hero",
+      "description": "Kinetic typography reveal of 'BELGIUM ELITE ACADEMY'. Background is dark floodlit stadium. Subheadline in French explaining the path to pro. No forms."
+    },
+    {
+      "name": "Marquee",
+      "description": "Editorial slow-scroll ribbon with key phrases: 'TRAIN LIKE A PRO • BOOSTER VOTRE CARRIÈRE • U17-U23 • ÉLITE'."
+    },
+    {
+      "name": "Manifesto",
+      "description": "Numbered chapters (01. La Méthode, 02. Pour Qui, 03. Le Parcours Pro). Large numbers, sharp borders, bold short paragraphs. Left-aligned."
+    },
+    {
+      "name": "Gallery",
+      "description": "Bento-style or asymmetrical masonry grid of U17-U23 training photos. Images treated with high contrast and slight grayscale to match the elite tone."
+    },
+    {
+      "name": "Contact / Footer",
+      "description": "Massive typography displaying Email and Phone number. Clean, brutalist layout for direct contact."
+    }
+  ],
+  "image_urls": {
+    "hero_background": {
+      "url": "https://images.pexels.com/photos/186239/pexels-photo-186239.jpeg",
+      "description": "Floodlit stadium at night"
+    },
+    "gallery_1": {
+      "url": "https://images.unsplash.com/photo-1544698310-74ea9d1c8258",
+      "description": "Player silhouette training night"
+    },
+    "gallery_2": {
+      "url": "https://images.unsplash.com/photo-1761258771858-36b6656f2711",
+      "description": "Running football player"
+    },
+    "gallery_3": {
+      "url": "https://images.unsplash.com/photo-1518905332052-b6cfda20ee45",
+      "description": "Goalie catching ball"
+    },
+    "detail_cleats": {
+      "url": "https://images.unsplash.com/photo-1511886929837-354d827aae26",
+      "description": "Adidas cleats and ball detail"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Initialize standard Tailwind config with dark mode as default background.",
+    "Add the Google Fonts import to index.css and extend the Tailwind config to use 'Anton' and 'Inter'.",
+    "Implement @studio-freight/react-lenis for smooth scrolling at the root App level.",
+    "Strictly follow the Dark / Athletic aesthetic. DO NOT use rounded bubbly buttons; use sharp, tactical minimalism (0px or 2px max border radius).",
+    "For the hero background image, place it in an absolute positioned div with object-cover and a strong bg-black/60 overlay to allow the white kinetic text to pop.",
+    "Use Framer Motion to create the line-by-line reveal in the hero.",
+    "All text must be in French.",
+    "Do NOT use placeholder images. Use ONLY the provided image_urls.",
+    "Implement react-fast-marquee for the animated text band.",
+    "Ensure the layout is perfectly responsive on both mobile and PC.",
+    "Ensure 'data-testid' is on all crucial readable text and interactive parts."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Avoid generic centered layouts and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects carefully; no fully transparent backgrounds under text.",
+    "MUST NOT apply universal transition (e.g., transition: all). Add specific transitions.",
+    "MUST NOT center align the App container (no .App { text-align: center; }).",
+    "Never use AI assistant emoji characters (🤖🧠💡).",
+    "Every interaction needs micro-animations (hover states, focus).",
+    "Use generous spacing (p-8, p-12, p-16) for premium feel."
+  ]
+}
