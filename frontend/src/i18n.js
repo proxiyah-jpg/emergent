@@ -7,6 +7,7 @@ export const translations = {
       badge: "Académie de football · U17 — U23 · Belgique",
       subtitle: "Des entraînements d'exigence professionnelle qui vous mènent vers une carrière pro. Déjà en club ? Rejoignez-nous en complément et boostez votre progression.",
       cta: "Découvrir l'académie",
+      soundCta: "Activer le son",
     },
     marquee: ["S'entraîner comme un pro", "Boostez votre carrière", "U17 — U23", "Élite belge", "Vers le monde professionnel"],
     manifesto: {
@@ -50,6 +51,7 @@ export const translations = {
       badge: "Voetbalacademie · U17 — U23 · België",
       subtitle: "Trainingen op professioneel niveau die je naar een profcarrière leiden. Speel je al bij een club? Sluit je erbij aan en boost je ontwikkeling.",
       cta: "Ontdek de academie",
+      soundCta: "Geluid aanzetten",
     },
     marquee: ["Train als een pro", "Boost je carrière", "U17 — U23", "Belgische elite", "Naar het profvoetbal"],
     manifesto: {
@@ -93,6 +95,7 @@ export const translations = {
       badge: "Football academy · U17 — U23 · Belgium",
       subtitle: "Professional-standard training that leads you to a pro career. Already at a club? Join us on top of it and boost your progression.",
       cta: "Discover the academy",
+      soundCta: "Turn sound on",
     },
     marquee: ["Train like a pro", "Boost your career", "U17 — U23", "Belgian elite", "The road to pro"],
     manifesto: {

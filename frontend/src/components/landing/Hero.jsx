@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Volume2 } from "lucide-react";
 import { useLang } from "@/i18n";
 
 const lineAnim = (delay) => ({
@@ -12,17 +12,51 @@ const lineAnim = (delay) => ({
 export default function Hero() {
   const { t } = useLang();
   const ref = useRef(null);
+  const videoRef = useRef(null);
+  const [showSoundBtn, setShowSoundBtn] = useState(false);
+  const [soundPlayed, setSoundPlayed] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const onEnded = () => {
+      setSoundPlayed(true);
+      v.muted = true;
+      v.loop = true;
+      v.play().catch(() => {});
+    };
+    v.addEventListener("ended", onEnded);
+    v.loop = false;
+    v.muted = false;
+    v.play().catch(() => {
+      v.muted = true;
+      v.loop = true;
+      v.play().catch(() => {});
+      setShowSoundBtn(true);
+    });
+    return () => v.removeEventListener("ended", onEnded);
+  }, []);
+
+  const enableSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.loop = false;
+    v.muted = false;
+    v.currentTime = 0;
+    v.play().catch(() => {});
+    setShowSoundBtn(false);
+  };
 
   return (
     <section id="hero" ref={ref} className="relative flex min-h-screen flex-col justify-end overflow-hidden" data-testid="hero-section">
       <motion.div style={{ y: bgY }} className="absolute inset-0">
         <video
+          ref={videoRef}
           autoPlay
           muted
-          loop
           playsInline
           preload="auto"
           className="h-[120%] w-full object-cover"
@@ -33,6 +67,19 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-black/40" />
       </motion.div>
+
+      {showSoundBtn && !soundPlayed && (
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.6 }}
+          onClick={enableSound}
+          data-testid="hero-sound-button"
+          className="fixed bottom-6 right-6 z-40 flex items-center gap-3 border border-volt bg-black/70 px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-volt backdrop-blur-md transition-colors duration-300 hover:bg-volt hover:text-black"
+        >
+          <Volume2 size={16} /> {t.hero.soundCta}
+        </motion.button>
+      )}
 
       <motion.div style={{ opacity: fade }} className="relative z-10 mx-auto w-full max-w-[1600px] px-5 pb-16 pt-40 md:px-12 md:pb-24">
         <motion.img

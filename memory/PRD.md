@@ -32,6 +32,10 @@ Créer un site de présentation pour une académie de football "BELGIUM ELITE AC
 - **Logo officiel de l'académie** intégré (header + hero, bien visible) (27 août)
 - **Localisation Google Maps** : carte intégrée en mode sombre + lien vers Terrain de football Saint-Nicolas, Liège (27 août)
 - Section staff réduite à un seul coach : YILMAZ, Entraîneur Principal, 30+ ans d'expérience (validé par le client)
+- **Son de la vidéo hero** : tentative de lecture automatique avec son 1 seule fois à l'ouverture ; si le navigateur bloque (politique autoplay), bouton "Activer le son" affiché ; après la 1re lecture complète, la vidéo boucle en muet (27 août)
+
+## Note déploiement
+- Le site est déployé en production (https://pro-pathway-academy.emergent.host). Toute modification faite en preview nécessite un REDÉPLOIEMENT par l'utilisateur pour être visible en production.
 
 ## Points MOCKÉS / à confirmer
 - Aucun : le coach YILMAZ (Entraîneur Principal, 30+ ans d'expérience) est le vrai profil validé par le client (27 août)
